@@ -29,3 +29,4 @@ Este é uma simples aplicação desenvolvida para gerenciar o cadastro de **pilo
 ![Screenshot_51](https://github.com/user-attachments/assets/bfdef308-9487-4a9e-ae56-4604a34929b9)
 ![Screenshot_50](https://github.com/user-attachments/assets/0f123aa3-3112-491f-8859-58bef68afbe1)
 ![Screenshot_49](https://github.com/user-attachments/assets/4ee5c6d2-2529-4d7b-8cbe-53b8e2ef6e69)
+![Screenshot_57](https://github.com/user-attachments/assets/230eb73a-38e0-41db-8cdb-c922ff186366)
