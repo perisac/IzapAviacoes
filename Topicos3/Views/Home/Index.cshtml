@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Topicos3.Models.Rota>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<main>
+
+    <div class="container mt-5">
+        <div class="jumbotron bg-light p-5 rounded shadow-sm">
+            <h1 class="display-4 text-primary font-weight-bold">Izap Aviações</h1>
+            <p class="lead mt-3">
+                Bem-vindo à Izap Aviações, onde sua viagem dos sonhos começa! Somos especializados em oferecer experiências de voo únicas e inesquecíveis, levando você a destinos paradisíacos ao redor do mundo com o máximo de conforto e segurança.
+            </p>
+            <p>
+                Na Izap Aviações, acreditamos que a jornada é tão importante quanto o destino. Por isso, investimos em aeronaves modernas e uma tripulação altamente qualificada para garantir uma viagem suave e prazerosa. Desfrute de vistas deslumbrantes, serviços de alta qualidade a bordo e uma sensação de exclusividade que apenas a Izap Aviações pode proporcionar.
+            </p>
+            <p>
+                Descubra praias tropicais de areia branca, onde o horizonte se encontra com águas cristalinas, criando um cenário perfeito para momentos inesquecíveis. Ou voe até as montanhas cobertas de neve, onde aventuras emocionantes e paisagens de tirar o fôlego esperam por você. Para aqueles que preferem o charme urbano, explore cidades vibrantes, repletas de cultura, gastronomia e vida noturna.
+            </p>
+            <p>
+                Conectamos você aos destinos mais desejados, seja para férias relaxantes, escapadas românticas ou viagens de negócios com estilo. Nossa missão é tornar cada etapa da sua viagem um momento especial, do embarque ao pouso, com um serviço excepcional e atenção a cada detalhe.
+            </p>
+            <p>
+                Viaje com tranquilidade, sabendo que nossa equipe está comprometida com sua segurança e bem-estar. Com Izap Aviações, o céu não é o limite, mas o começo de uma experiência que você nunca esquecerá. Prepare-se para voar alto e descobrir o mundo de uma maneira completamente nova.
+            </p>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <h3 class="text-center text-secondary font-weight-bold mb-4">Explore nossas rotas</h3>
+        <div class="row gap-2" style="margin-top: 3%">
+            @foreach (var rota in Model)
+            {
+                <section class="col-md-3" aria-labelledby="gettingStartedTitle" style="margin-bottom: 0.5%">
+                    <!-- Link para a página de detalhes da rota -->
+                    <a class="navbar-brand" style="width:230px" href="@Url.Action("Details", "Rotas", new { id = rota.Id })">
+                        <div style="width: 100%; height:350px; box-shadow: 2px 2px 4px 0px rgb(176, 175, 175); border-top-left-radius: 15px; border-top-right-radius: 15px">
+                            <div style="width: 100%; height: 230px; overflow: hidden; position: relative; border-top-left-radius: 15px; border-top-right-radius: 15px">
+                                <img src="~/Imagens/logo_izap.png" alt="avião" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+
+                            <div class="container" style="width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 5%; padding: 5%">
+                                <!-- Título com Origem - Destino -->
+                                <p id="gettingStartedTitle" style="font-weight: 500; font-size: 16px; text-align: center;">
+                                    @($"{rota.Origem} - {rota.Destino}")
+                                </p>
+                                <!-- Avião -->
+                                <p style="text-align: center; font-size: 14px; line-height: 0%">
+                                    Avião: @Html.DisplayFor(modelItem => rota.Aviao.Modelo)
+                                </p>
+                                <!-- Distância -->
+                                <p style="text-align: center; font-size: 14px; line-height: 0%">
+                                    Distância: @Html.DisplayFor(modelItem => rota.Distancia) km
+                                </p>
+                                <!-- Tempo Estimado -->
+                                <p style="text-align: center; font-size: 14px; line-height: 0%">
+                                    Tempo Estimado: @Html.DisplayFor(modelItem => rota.TempoEstimado)
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </section>
+            }
+        </div>
+    </div>
+
+</main>

@@ -1,0 +1,51 @@
+﻿@model Topicos3.Models.Aviao
+
+@{
+    ViewBag.Title = "Excluir Avião";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="text-danger mb-4">Excluir Avião</h2>
+
+    <h4 class="text-muted">Tem certeza de que deseja excluir este avião?</h4>
+    <div class="bg-light p-4 rounded shadow-sm">
+        <h5 class="font-weight-bold">Detalhes do Avião</h5>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-4">Modelo</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.Modelo)</dd>
+
+            <dt class="col-sm-4">Autonomia</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.Autonomia)</dd>
+
+            <dt class="col-sm-4">Ano de Fabricação</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.AnoFabricacao)</dd>
+
+            <dt class="col-sm-4">Capacidade</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.Capacidade)</dd>
+
+            <dt class="col-sm-4">Velocidade Média</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.VelocidadeMedia)</dd>
+
+            <dt class="col-sm-4">Horas de Voo</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.HorasVoo)</dd>
+
+            <dt class="col-sm-4">Última Manutenção</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.UltimaManutencao)</dd>
+
+            <dt class="col-sm-4">Nome da Tripulação</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.Tripulacao.NomeTripulacao)</dd>
+        </dl>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="mt-4 d-flex gap-3">
+            <input type="submit" value="Excluir" class="btn btn-danger" />
+            @Html.ActionLink("Voltar à Lista", "Index", null, new { @class = "btn btn-secondary" })
+        </div>
+    }
+</div>

@@ -1,0 +1,36 @@
+﻿@model Topicos3.Models.Comissario
+
+@{
+    ViewBag.Title = "Detalhes do Comissário";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="text-primary mb-4">Detalhes do Comissário</h2>
+
+    <div class="bg-light p-4 rounded shadow-sm">
+        <h4 class="font-weight-bold">Comissário</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-4">Nome</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.Nome)</dd>
+
+            <dt class="col-sm-4">Data de Nascimento</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.DataNascimento)</dd>
+
+            <dt class="col-sm-4">CPF</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.Cpf)</dd>
+
+            <dt class="col-sm-4">Anos de Experiência</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.AnosExperiencia)</dd>
+
+            <dt class="col-sm-4">Último Treinamento</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.UltimoTreinamento)</dd>
+        </dl>
+    </div>
+
+    <div class="mt-4 d-flex gap-3">
+        @Html.ActionLink("Editar", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Voltar à Lista", "Index", null, new { @class = "btn btn-secondary" })
+    </div>
+</div>

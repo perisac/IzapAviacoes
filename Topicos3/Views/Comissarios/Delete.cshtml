@@ -1,0 +1,42 @@
+﻿@model Topicos3.Models.Comissario
+
+@{
+    ViewBag.Title = "Excluir Comissário";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="text-danger mb-4">Excluir Comissário</h2>
+
+    <h4 class="text-muted">Tem certeza de que deseja excluir este comissário?</h4>
+    <div class="bg-light p-4 rounded shadow-sm">
+        <h5 class="font-weight-bold">Detalhes do Comissário</h5>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-4">Nome</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.Nome)</dd>
+
+            <dt class="col-sm-4">Data de Nascimento</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.DataNascimento)</dd>
+
+            <dt class="col-sm-4">CPF</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.Cpf)</dd>
+
+            <dt class="col-sm-4">Anos de Experiência</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.AnosExperiencia)</dd>
+
+            <dt class="col-sm-4">Último Treinamento</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.UltimoTreinamento)</dd>
+        </dl>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="mt-4 d-flex gap-3">
+            <input type="submit" value="Excluir" class="btn btn-danger" /> <!-- Botão vermelho para exclusão -->
+            @Html.ActionLink("Voltar à Lista", "Index", null, new { @class = "btn btn-secondary" }) <!-- Botão cinza para voltar -->
+        </div>
+    }
+</div>

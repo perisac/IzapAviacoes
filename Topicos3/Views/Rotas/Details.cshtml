@@ -1,0 +1,36 @@
+﻿@model Topicos3.Models.Rota
+
+@{
+    ViewBag.Title = "Detalhes da Rota";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="text-primary mb-4">Detalhes da Rota</h2>
+
+    <div class="bg-light p-4 rounded shadow-sm">
+        <h5 class="font-weight-bold">Informações da Rota</h5>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-4">Origem</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.Origem)</dd>
+
+            <dt class="col-sm-4">Destino</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.Destino)</dd>
+
+            <dt class="col-sm-4">Distância</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.Distancia)</dd>
+
+            <dt class="col-sm-4">Tempo Estimado</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.TempoEstimado)</dd>
+
+            <dt class="col-sm-4">Avião</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.Aviao.Modelo)</dd>
+        </dl>
+    </div>
+
+    <div class="mt-4">
+        @Html.ActionLink("Editar", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" }) |
+        @Html.ActionLink("Voltar à Lista", "Index", null, new { @class = "btn btn-secondary" })
+    </div>
+</div>

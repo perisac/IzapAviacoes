@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Topicos3.Models.Piloto>
+
+@{
+    ViewBag.Title = "Lista de Pilotos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="text-primary mb-4 text-center">Lista de Pilotos</h2>
+
+    <!-- Botão para criar um novo piloto -->
+    <div class="mb-3 text-right">
+        @Html.ActionLink("Novo Piloto", "Create", null, new { @class = "btn btn-success" })
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover shadow-sm">
+            <thead class="bg-primary text-white">
+                <tr>
+                    <th>Nome</th>
+                    <th>Data de Nascimento</th>
+                    <th>CPF</th>
+                    <th>Tipo de Licença</th>
+                    <th>Tempo de Experiência</th>
+                    <th>Horas de Voo</th>
+                    <th>Última Avaliação Médica</th>
+                    <th>Último Treinamento</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Nome)</td>
+                        <td>@Html.DisplayFor(modelItem => item.DataNascimento)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Cpf)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TipoLicenca)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TempoExperiencia)</td>
+                        <td>@Html.DisplayFor(modelItem => item.HorasVoo)</td>
+                        <td>@Html.DisplayFor(modelItem => item.UltimaAvaliacaoMedica)</td>
+                        <td>@Html.DisplayFor(modelItem => item.UltimoTreinamento)</td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-sm btn-warning mr-2" })
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-sm btn-danger" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

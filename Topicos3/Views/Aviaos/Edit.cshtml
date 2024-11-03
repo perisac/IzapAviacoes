@@ -1,0 +1,109 @@
+﻿@model Topicos3.Models.Aviao
+
+@{
+    ViewBag.Title = "Editar Avião";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="text-primary mb-4">Editar Avião</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4 class="font-weight-bold text-muted">Detalhes do Avião</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+            @Html.HiddenFor(model => model.Id)
+
+            <!-- Campo Modelo -->
+            <div class="form-group row mb-3">
+                @Html.LabelFor(model => model.Modelo, new { @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    @Html.EditorFor(model => model.Modelo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Modelo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Campo Autonomia -->
+            <div class="form-group row mb-3">
+                @Html.LabelFor(model => model.Autonomia, new { @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    @Html.EditorFor(model => model.Autonomia, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Autonomia, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Campo Ano de Fabricação -->
+            <div class="form-group row mb-3">
+                @Html.LabelFor(model => model.AnoFabricacao, new { @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    @Html.EditorFor(model => model.AnoFabricacao, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.AnoFabricacao, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Campo Capacidade -->
+            <div class="form-group row mb-3">
+                @Html.LabelFor(model => model.Capacidade, new { @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    @Html.EditorFor(model => model.Capacidade, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Capacidade, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Campo Velocidade Média -->
+            <div class="form-group row mb-3">
+                @Html.LabelFor(model => model.VelocidadeMedia, new { @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    @Html.EditorFor(model => model.VelocidadeMedia, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.VelocidadeMedia, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Campo Horas de Voo -->
+            <div class="form-group row mb-3">
+                @Html.LabelFor(model => model.HorasVoo, new { @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    @Html.EditorFor(model => model.HorasVoo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HorasVoo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Campo Última Manutenção -->
+            <div class="form-group row mb-3">
+                @Html.LabelFor(model => model.UltimaManutencao, new { @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    @Html.EditorFor(model => model.UltimaManutencao, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UltimaManutencao, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Campo Tripulação -->
+            <div class="form-group row mb-3">
+                @Html.LabelFor(model => model.TripulacaoId, "Tripulação", new { @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    @Html.DropDownList("TripulacaoId", (SelectList)ViewBag.TripulacaoId, "Selecione uma Tripulação", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.TripulacaoId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Botão de Ação -->
+            <div class="form-group row">
+                <div class="col-sm-10 offset-sm-2">
+                    <input type="submit" value="Salvar" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="mt-4">
+        @Html.ActionLink("Voltar à Lista", "Index", null, new { @class = "btn btn-secondary" })
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

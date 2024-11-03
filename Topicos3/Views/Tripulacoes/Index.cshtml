@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Topicos3.Models.Tripulacao>
+
+@{
+    ViewBag.Title = "Lista de Tripulações";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="text-primary mb-4">Lista de Tripulações</h2>
+
+    <p>
+        @Html.ActionLink("Criar Novo", "Create", null, new { @class = "btn btn-success mb-3" })
+    </p>
+
+    <table class="table table-striped table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nome da Tripulação</th>
+                <th>Copiloto</th>
+                <th>Piloto</th>
+                <th>Comissários</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.NomeTripulacao)</td>
+                    <td>@Html.DisplayFor(modelItem => item.CoPiloto.Nome)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Piloto.Nome)</td>
+                    <td>
+                        @if (item.Comissarios != null && item.Comissarios.Any())
+                        {
+                            <ul class="list-unstyled mb-0">
+                                @foreach (var comissario in item.Comissarios)
+                                {
+                                    <li>@comissario.Nome</li>
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            <span class="text-muted">Nenhum comissário disponível</span>
+                        }
+                    </td>
+                    <td>
+                        <div class="d-flex gap-2">
+                            @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
+                            @Html.ActionLink("Detalhes", "Details", new { id = item.Id }, new { @class = "btn btn-info btn-sm" })
+                            @Html.ActionLink("Excluir", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

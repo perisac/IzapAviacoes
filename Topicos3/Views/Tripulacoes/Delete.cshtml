@@ -1,0 +1,62 @@
+﻿@model Topicos3.Models.Tripulacao
+
+@{
+    ViewBag.Title = "Excluir Tripulação";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="text-danger mb-4">Excluir Tripulação</h2>
+
+    <h4 class="text-muted">Tem certeza de que deseja excluir esta tripulação?</h4>
+
+    <!-- Exibição de erros de validação -->
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger">
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <p>@error.ErrorMessage</p>
+            }
+        </div>
+    }
+
+    <div class="bg-light p-4 rounded shadow-sm mb-4">
+        <h5 class="font-weight-bold">Detalhes da Tripulação</h5>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-4">Co-Piloto</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.CoPiloto.Nome)</dd>
+
+            <dt class="col-sm-4">Piloto</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.Piloto.Nome)</dd>
+
+            <dt class="col-sm-4">Comissários</dt>
+            <dd class="col-sm-8">
+                @if (Model.Comissarios != null && Model.Comissarios.Any())
+                {
+                    <ul class="list-unstyled">
+                        @foreach (var comissario in Model.Comissarios)
+                        {
+                            <li>@comissario.Nome</li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <p class="text-muted">Nenhum comissário associado</p>
+                }
+            </dd>
+        </dl>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="mt-4 d-flex gap-3">
+            <input type="submit" value="Excluir" class="btn btn-danger" />
+            @Html.ActionLink("Voltar à Lista", "Index", null, new { @class = "btn btn-secondary" })
+        </div>
+    }
+</div>

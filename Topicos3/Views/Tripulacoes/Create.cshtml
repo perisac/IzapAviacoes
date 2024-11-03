@@ -1,0 +1,57 @@
+﻿@model Topicos3.Models.Tripulacao
+
+@{
+    ViewBag.Title = "Criar Tripulação";
+}
+
+<div class="container mt-5">
+    <h2 class="text-primary mb-4">Criar Tripulação</h2>
+
+    @using (Html.BeginForm("Create", "Tripulacoes", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <!-- Campo Nome da Tripulação -->
+        <div class="form-group row mb-3">
+            @Html.LabelFor(model => model.NomeTripulacao, new { @class = "col-sm-2 col-form-label" })
+            <div class="col-sm-10">
+                @Html.TextBoxFor(model => model.NomeTripulacao, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.NomeTripulacao, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!-- Campo Piloto -->
+        <div class="form-group row mb-3">
+            @Html.LabelFor(model => model.PilotoId, "Piloto", new { @class = "col-sm-2 col-form-label" })
+            <div class="col-sm-10">
+                @Html.DropDownList("PilotoId", (SelectList)ViewBag.PilotoId, "Selecione um Piloto", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PilotoId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!-- Campo Co-Piloto -->
+        <div class="form-group row mb-3">
+            @Html.LabelFor(model => model.CoPilotoId, "Co-Piloto", new { @class = "col-sm-2 col-form-label" })
+            <div class="col-sm-10">
+                @Html.DropDownList("CoPilotoId", (SelectList)ViewBag.CoPilotoId, "Selecione um Co-Piloto", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CoPilotoId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!-- Campo Comissários -->
+        <div class="form-group row mb-3">
+            @Html.Label("Comissários", new { @class = "col-sm-2 col-form-label" })
+            <div class="col-sm-10">
+                @Html.ListBox("comissarioIds", (MultiSelectList)ViewBag.comissarioIds, new { @class = "form-control", multiple = "multiple" })
+                @Html.ValidationMessage("comissarioIds", "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!-- Botão de Ação -->
+        <div class="form-group row">
+            <div class="col-sm-10 offset-sm-2">
+                <input type="submit" value="Criar" class="btn btn-primary" />
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,83 @@
+﻿@model Topicos3.Models.Piloto
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Piloto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataNascimento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataNascimento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cpf)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cpf)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoLicenca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoLicenca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TempoExperiencia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TempoExperiencia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HorasVoo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HorasVoo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UltimaAvaliacaoMedica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UltimaAvaliacaoMedica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UltimoTreinamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UltimoTreinamento)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

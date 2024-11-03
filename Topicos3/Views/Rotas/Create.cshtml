@@ -1,0 +1,81 @@
+﻿@model Topicos3.Models.Rota
+
+@{
+    ViewBag.Title = "Criar Rota";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="text-primary mb-4">Criar Rota</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4 class="font-weight-bold text-muted">Detalhes da Rota</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+
+            <!-- Campo Origem -->
+            <div class="form-group row mb-3">
+                @Html.LabelFor(model => model.Origem, new { @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    @Html.EditorFor(model => model.Origem, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Origem, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Campo Destino -->
+            <div class="form-group row mb-3">
+                @Html.LabelFor(model => model.Destino, new { @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    @Html.EditorFor(model => model.Destino, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Destino, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Campo Distância -->
+            <div class="form-group row mb-3">
+                @Html.LabelFor(model => model.Distancia, new { @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    @Html.EditorFor(model => model.Distancia, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Distancia, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Campo Tempo Estimado -->
+            <div class="form-group row mb-3">
+                @Html.LabelFor(model => model.TempoEstimado, new { @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    @Html.EditorFor(model => model.TempoEstimado, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TempoEstimado, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Campo Avião -->
+            <div class="form-group row mb-3">
+                @Html.LabelFor(model => model.AviaoId, "Avião", new { @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    @Html.DropDownList("AviaoId", (SelectList)ViewBag.AviaoId, "Selecione um Avião", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.AviaoId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Botão de Ação -->
+            <div class="form-group row">
+                <div class="col-sm-10 offset-sm-2">
+                    <input type="submit" value="Criar" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="mt-4">
+        @Html.ActionLink("Voltar à Lista", "Index", null, new { @class = "btn btn-secondary" })
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
